@@ -23,9 +23,13 @@
                     </form>
                 </div>
             </div>
- 
-
-        </div>
-        
+            @foreach ($tweets as $tweet )
+            <div class="card my-4 bg-white">
+                <h2 class="text-xl font-bold mx-3"> {{$tweet->users->name}} </h2>
+                <p class="mx-3"> {{$tweet->content}} </p>
+                <p class="text-end text-xs mx-5"> {{$tweet->created_at->diffForHumans()}} </p>
+            </div>
+            @endforeach
+        </div>       
     </div>
 </x-app-layout>
