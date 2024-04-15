@@ -32,6 +32,14 @@
                         <a href="{{ route('tweet.edit', $tweet->id) }}" class="link link-hover text-blue-400">
                             Edit</a>
                     @endcan
+
+                    @can('delete', $tweet)
+                        <form action="{{ route('tweet.destroy', $tweet->id) }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-error btn-sm">Hapus</button>
+                        </form>
+                    @endcan
                     <span class="text-sm"> {{$tweet->created_at->diffForHumans()}} </span>
                 </div>                
             </div>
